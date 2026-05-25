@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy — Daily Log</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e5e5e0;
+    --accent: #2f6f4f;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    color: var(--muted);
+    margin: 0 0 32px;
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 36px 0 12px;
+    font-weight: 600;
+  }
+  p {
+    margin: 0 0 14px;
+  }
+  ul {
+    padding-left: 22px;
+    margin: 0 0 14px;
+  }
+  li { margin-bottom: 6px; }
+  strong { font-weight: 600; }
+  a { color: var(--accent); }
+  code {
+    background: #fff;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .updated {
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .nav {
+    margin-bottom: 36px;
+    font-size: 14px;
+  }
+  .nav a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .nav a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav">
+    <a href="https://github.com/youfun88/daily-log">← Back to repo</a>
+  </div>
+
+  <h1>Privacy Policy</h1>
+  <p class="lede">Daily Log Chrome Extension</p>
+
+  <h2>The short version</h2>
+  <p>Daily Log does not collect, transmit, sell, or share any personal data. Everything you enter stays inside your browser on your device.</p>
+
+  <h2>What data the extension handles</h2>
+  <p>Daily Log stores the following locally in your browser, using the browser's <code>localStorage</code> API:</p>
+  <ul>
+    <li>The list of goals you create (names and target minutes)</li>
+    <li>The list of note prompts you create (labels)</li>
+    <li>Today's draft values (slider positions, text in note fields)</li>
+    <li>Per-day history of how many minutes you logged and how many goals you hit</li>
+  </ul>
+  <p>This data never leaves your device. The extension makes no network requests. There is no server, no account, no telemetry, and no analytics.</p>
+
+  <h2>What the extension does NOT do</h2>
+  <ul>
+    <li>No accounts or sign-in</li>
+    <li>No cloud sync</li>
+    <li>No tracking pixels or analytics services</li>
+    <li>No ads</li>
+    <li>No reading or modifying any web page you visit</li>
+    <li>No access to your browsing history, bookmarks, cookies, or other extensions</li>
+    <li>No access to your files except the single markdown or JSON file you explicitly create via <strong>Save today's log</strong> or <strong>Export backup</strong></li>
+  </ul>
+
+  <h2>Permissions the extension requests</h2>
+  <p>The extension's <code>manifest.json</code> declares only the bare minimum permissions:</p>
+  <ul>
+    <li><strong>action</strong> — to display a toolbar icon you can click</li>
+    <li><strong>background</strong> — to handle the click and open the Daily Log tab</li>
+  </ul>
+  <p>It does NOT request <code>tabs</code>, <code>host permissions</code>, <code>storage</code> (it uses <code>localStorage</code> instead, which doesn't require a permission declaration), <code>activeTab</code>, <code>cookies</code>, or any other permission category that lets an extension see what you're doing.</p>
+
+  <h2>File downloads and uploads</h2>
+  <p>Two features create files on your computer, and both require an explicit click each time:</p>
+  <ul>
+    <li><strong>Save today's log</strong> downloads a single <code>.md</code> file to your Downloads folder. Nothing is uploaded.</li>
+    <li><strong>Export backup</strong> downloads a single <code>.json</code> file to your Downloads folder. Nothing is uploaded.</li>
+    <li><strong>Import backup</strong> opens your system file picker so you can choose a <code>.json</code> file to restore. The file is read in your browser only. Nothing is uploaded.</li>
+  </ul>
+
+  <h2>Children's privacy</h2>
+  <p>The extension does not collect any data from any user, so it does not knowingly collect data from children. It is safe for use by people of any age, subject to the Chrome Web Store's own age requirements.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If the extension ever changes in a way that affects what data is handled or how, this page will be updated and the version date below will change.</p>
+
+  <h2>Contact</h2>
+  <p>Issues and questions can be opened at <a href="https://github.com/youfun88/daily-log/issues">github.com/youfun88/daily-log/issues</a>.</p>
+
+  <p class="updated">Last updated: 2026-05-25. Effective from the initial public release of Daily Log v1.0.0.</p>
+</div>
+</body>
+</html>

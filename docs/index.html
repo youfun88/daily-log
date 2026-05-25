@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daily Log — Chrome Extension</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e5e5e0;
+    --accent: #2f6f4f;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 40px;
+    margin: 0 0 14px;
+    letter-spacing: -0.02em;
+  }
+  .lede {
+    color: var(--muted);
+    margin: 0 0 36px;
+    font-size: 17px;
+  }
+  .btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  a.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.12s ease;
+    border: 1px solid var(--line);
+  }
+  a.btn.primary {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+  a.btn.primary:hover { background: #265a40; }
+  a.btn.secondary {
+    background: white;
+    color: var(--ink);
+  }
+  a.btn.secondary:hover { border-color: var(--ink); }
+  .footer {
+    margin-top: 48px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Daily Log</h1>
+  <p class="lede">A pocket coach for whatever you're trying to do every day. Track goals with one-tap timers and a 12-month adherence heatmap. Free, open, and entirely local to your browser.</p>
+  <div class="btns">
+    <a class="btn primary" href="https://github.com/youfun88/daily-log">GitHub repository</a>
+    <a class="btn secondary" href="https://github.com/youfun88/daily-log/releases/latest">Download latest release</a>
+    <a class="btn secondary" href="privacy.html">Privacy policy</a>
+  </div>
+  <p class="footer">© 2026 Yufan Chen. <a href="https://github.com/youfun88/daily-log/blob/main/LICENSE">Free for personal use.</a></p>
+</div>
+</body>
+</html>
