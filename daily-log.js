@@ -1,9 +1,4 @@
-  const DEFAULT_BLOCKS = [
-    { key: 'deep-work', label: 'Deep work', planned: 90 },
-    { key: 'exercise',  label: 'Exercise',  planned: 45 },
-    { key: 'reading',   label: 'Reading',   planned: 30 },
-    { key: 'learning',  label: 'Learning',  planned: 30 },
-  ];
+  const DEFAULT_BLOCKS = [];
 
   const SNAP = 5;
   const MAX = 240;
@@ -12,12 +7,7 @@
   const NOTES_KEY = 'daily-log-notes-v1';
   const HISTORY_KEY = 'daily-log-history-v1';
 
-  const DEFAULT_NOTES = [
-    { key: 'shipped', label: 'What shipped today (main work)?', placeholder: '' },
-    { key: 'outcome', label: 'Outcome moving a goal forward',    placeholder: '' },
-    { key: 'blocker', label: 'Blocker for tomorrow',              placeholder: '' },
-    { key: 'notes',   label: 'Notes (optional)',                  placeholder: '' },
-  ];
+  const DEFAULT_NOTES = [];
 
   const blocksEl = document.getElementById('blocks');
   const notesEl = document.getElementById('notes');
@@ -399,7 +389,6 @@
         <input type="range" id="s-${b.key}" min="0" max="${MAX}" step="${SNAP}" value="0" />
       </div>
       <div class="chips">
-        <button class="chip" data-set="0">Skipped</button>
         <button class="chip" data-set="${Math.round(b.planned/2)}">Halfway</button>
         <button class="chip" data-set="${b.planned}">Completed</button>
         <button class="chip" data-delta="-15">−15</button>

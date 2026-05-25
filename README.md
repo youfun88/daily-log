@@ -7,7 +7,7 @@ Track your daily goals with one-tap timers, a 12-month adherence heatmap, and pe
 - **One tap to start a timer.** Recent goals always in view.
 - **Live elapsed counter** while a timer runs. Survives refresh and closing the tab.
 - **Drag to reorder** goals. Click the name to rename. Hover the card to remove.
-- **Per-goal targets** with smart chips: Skipped, Half, Planned, ±15 minutes.
+- **Per-goal targets** with smart chips: Halfway, Completed, ±15 minutes.
 - **Year-long heatmap** showing every day at a glance:
   - Gray = no progress
   - Mid green = some goals hit
