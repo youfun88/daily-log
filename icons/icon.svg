@@ -1,0 +1,36 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a2521"/>
+      <stop offset="1" stop-color="#0a100d"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle background -->
+  <rect width="1024" height="1024" rx="230" fill="url(#bg)"/>
+  <rect width="1024" height="1024" rx="230" fill="url(#shine)"/>
+
+  <!-- 3x3 heatmap progression: gray to bright green diagonally -->
+  <!-- Cell 256x256, gap 48, margins 80 -->
+  <g>
+    <!-- Row 0 -->
+    <rect x="80"  y="80"  width="256" height="256" rx="36" fill="#2a3032"/>
+    <rect x="384" y="80"  width="256" height="256" rx="36" fill="#1c4d2e"/>
+    <rect x="688" y="80"  width="256" height="256" rx="36" fill="#2ea44f"/>
+
+    <!-- Row 1 -->
+    <rect x="80"  y="384" width="256" height="256" rx="36" fill="#1c4d2e"/>
+    <rect x="384" y="384" width="256" height="256" rx="36" fill="#2ea44f"/>
+    <rect x="688" y="384" width="256" height="256" rx="36" fill="#2ea44f"/>
+
+    <!-- Row 2 -->
+    <rect x="80"  y="688" width="256" height="256" rx="36" fill="#2ea44f"/>
+    <rect x="384" y="688" width="256" height="256" rx="36" fill="#2ea44f"/>
+    <!-- Today: brightest, with subtle glow -->
+    <rect x="688" y="688" width="256" height="256" rx="36" fill="#5ce0a5"/>
+  </g>
+</svg>
