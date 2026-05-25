@@ -13,7 +13,8 @@ Track your daily goals with one-tap timers, a 12-month adherence heatmap, and pe
   - Mid green = some goals hit
   - Bright green = all goals hit
 - **Save to file** downloads today's log as a dated markdown file (`daily-log-YYYY-MM-DD.md`).
-- **Auto-draft** to browser storage — refresh-safe.
+- **Auto-draft** to browser storage. Refresh-safe.
+- **Backup & restore** with one-click JSON export/import. Move your goals, notes, and full history between computers.
 
 ## Install (Load Unpacked)
 

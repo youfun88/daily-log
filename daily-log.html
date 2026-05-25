@@ -760,6 +760,8 @@
     <button class="secondary" id="copyBtn">Copy markdown</button>
     <button class="secondary" id="previewBtn">Preview</button>
     <button class="secondary" id="helpBtn">Help</button>
+    <button class="secondary" id="exportBackupBtn">Export backup</button>
+    <button class="secondary" id="importBackupBtn">Import backup</button>
     <button class="subtle" id="resetBtn">Reset day</button>
   </div>
 
@@ -843,6 +845,13 @@
       <li><strong>Preview:</strong> shows the markdown that will be saved.</li>
       <li><strong>Reset day:</strong> clears today's sliders and notes. Your goal list and history stay.</li>
     </ul>
+
+    <h3>Backup &amp; restore (move between computers)</h3>
+    <ul>
+      <li><strong>Export backup:</strong> downloads a <code>.json</code> snapshot of all your goals, notes, and history. Keep it somewhere safe (Drive, Dropbox, a usb stick).</li>
+      <li><strong>Import backup:</strong> on the new computer, install Daily Log, click Import backup, pick the <code>.json</code> file. Confirms before replacing existing data. Page reloads after.</li>
+    </ul>
+    <p>Backup files are plain JSON; you can open them in any text editor.</p>
 
     <h3>Privacy</h3>
     <p>Your data lives in this browser only. No cloud, no account, no telemetry. Clearing browser data wipes your local history, so use <strong>Save to file</strong> daily to keep a portable copy on disk.</p>

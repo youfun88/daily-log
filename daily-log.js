@@ -912,6 +912,82 @@
 
   document.getElementById('saveBtn').addEventListener('click', saveToFile);
 
+  // --- backup & restore ---
+  function exportBackup() {
+    const backup = {
+      app: 'daily-log',
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      blocks: loadBlocks() || [],
+      notes: loadNotes() || [],
+      history: getHistory(),
+      state: (function () {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); }
+        catch (e) { return null; }
+      })(),
+    };
+    try {
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `daily-log-backup-${todayKey}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast(`Saved daily-log-backup-${todayKey}.json`);
+    } catch (e) {
+      showToast('Export failed: ' + e.message);
+    }
+  }
+
+  function importBackup() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json,.json';
+    input.addEventListener('change', async () => {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (!data || typeof data !== 'object') throw new Error('Not a valid backup file');
+        if (data.app && data.app !== 'daily-log') throw new Error('Backup is for a different app');
+
+        const summary = [];
+        if (Array.isArray(data.blocks)) summary.push(`${data.blocks.length} goal${data.blocks.length === 1 ? '' : 's'}`);
+        if (Array.isArray(data.notes))  summary.push(`${data.notes.length} note${data.notes.length === 1 ? '' : 's'}`);
+        if (data.history && typeof data.history === 'object') {
+          const days = Object.keys(data.history).length;
+          summary.push(`${days} day${days === 1 ? '' : 's'} of history`);
+        }
+        const summaryStr = summary.length ? summary.join(', ') : '(empty backup)';
+        if (!confirm(`Import this backup?\n\n${summaryStr}\n\nThis will replace your current goals, notes, and history.`)) return;
+
+        if (Array.isArray(data.blocks)) localStorage.setItem(BLOCKS_KEY, JSON.stringify(data.blocks));
+        if (Array.isArray(data.notes))  localStorage.setItem(NOTES_KEY,  JSON.stringify(data.notes));
+        if (data.history && typeof data.history === 'object') {
+          localStorage.setItem(HISTORY_KEY, JSON.stringify(data.history));
+        }
+        // Today's draft state: only restore if the date matches today, otherwise drop it.
+        if (data.state && typeof data.state === 'object' && data.state.date === todayKey) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data.state));
+        } else {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+        showToast('Imported. Reloading…');
+        setTimeout(() => location.reload(), 500);
+      } catch (e) {
+        showToast('Import failed: ' + e.message);
+      }
+    });
+    input.click();
+  }
+
+  document.getElementById('exportBackupBtn').addEventListener('click', exportBackup);
+  document.getElementById('importBackupBtn').addEventListener('click', importBackup);
+
   // --- help modal ---
   const helpModal = document.getElementById('helpModal');
   function openHelp() { helpModal.classList.add('open'); }
