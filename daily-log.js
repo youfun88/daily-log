@@ -15,7 +15,6 @@
   const previewEl = document.getElementById('preview');
   const toastEl = document.getElementById('toast');
 
-  let fileHandle = null;
   let activeTimer = null; // { key, startedAt }
   let tickInterval = null;
   let draggingKey = null;
@@ -890,54 +889,28 @@
     if (e.key === 'Escape') closeAddNoteForm();
   });
 
-  async function appendToFile() {
+  function saveToFile() {
     if (activeTimer) stopTimer();
     const md = buildMarkdown();
-
-    if (!('showOpenFilePicker' in window)) {
-      try {
-        await navigator.clipboard.writeText(md);
-        showToast('Browser lacks file access — copied to clipboard instead');
-      } catch (e) {
-        previewEl.textContent = md;
-        previewEl.style.display = 'block';
-        showToast('Copy markdown below and paste into daily-log.md');
-      }
-      return;
-    }
-
+    const filename = `daily-log-${todayKey}.md`;
     try {
-      if (!fileHandle) {
-        const picked = await window.showOpenFilePicker({
-          types: [{ description: 'Markdown', accept: { 'text/markdown': ['.md'] } }],
-          multiple: false,
-        });
-        fileHandle = picked[0];
-      }
-      const perm = await fileHandle.queryPermission({ mode: 'readwrite' });
-      if (perm !== 'granted') {
-        const req = await fileHandle.requestPermission({ mode: 'readwrite' });
-        if (req !== 'granted') throw new Error('Write permission denied');
-      }
-      const file = await fileHandle.getFile();
-      const existing = await file.text();
-      const writable = await fileHandle.createWritable();
-      const sep = existing.endsWith('\n') ? '' : '\n';
-      await writable.write(existing + sep + md);
-      await writable.close();
-      showToast('Appended to ' + fileHandle.name);
+      const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast(`Saved ${filename}`);
     } catch (e) {
       console.error(e);
-      try {
-        await navigator.clipboard.writeText(md);
-        showToast('Save failed — copied to clipboard');
-      } catch (e2) {
-        showToast('Save failed: ' + e.message);
-      }
+      showToast('Save failed: ' + e.message);
     }
   }
 
-  document.getElementById('saveBtn').addEventListener('click', appendToFile);
+  document.getElementById('saveBtn').addEventListener('click', saveToFile);
 
   // --- help modal ---
   const helpModal = document.getElementById('helpModal');
