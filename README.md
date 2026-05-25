@@ -12,7 +12,7 @@ Track your daily goals with one-tap timers, a 12-month adherence heatmap, and pe
   - Gray = no progress
   - Mid green = some goals hit
   - Bright green = all goals hit
-- **Save to file** downloads today's log as a dated markdown file (`daily-log-YYYY-MM-DD.md`).
+- **Save today's log** downloads today's entry as a dated markdown file (`daily-log-YYYY-MM-DD.md`).
 - **Auto-draft** to browser storage. Refresh-safe.
 - **Backup & restore** with one-click JSON export/import. Move your goals, notes, and full history between computers.
 
@@ -27,7 +27,7 @@ Track your daily goals with one-tap timers, a 12-month adherence heatmap, and pe
 
 ## Privacy
 
-All data stays in your browser's local storage. The extension makes no network requests. The only file it can touch is the markdown file you explicitly pick via **Save to file**.
+All data stays in your browser's local storage. The extension makes no network requests. Files are only ever created in your Downloads folder when you explicitly click **Save today's log** or **Export backup**.
 
 ## Customizing for yourself
 
